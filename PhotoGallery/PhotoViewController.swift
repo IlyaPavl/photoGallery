@@ -21,6 +21,19 @@ class PhotoViewController: UIViewController {
     }
     
     @IBAction func shareAction(_ sender: Any) {
+        // создаем экземпляр специального класса, который отвечает за стандартные функции системы (как раз нам нужно кнопку поделиться)
+        let shareController = UIActivityViewController(activityItems: [image!], applicationActivities: nil)
+        
+        // для контроля за процессом сохранения / отправки и тд
+        shareController.completionWithItemsHandler = { _, bool, _, _ in
+            if bool {
+                print("Success")
+            }
+            
+        }
+        
+        present(shareController, animated: true)
+        
     }
     
     /*
